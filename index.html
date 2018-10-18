@@ -26,19 +26,17 @@
         font-size: 0.875em;
     }
 
-    input:focus::placeholder, textarea::focus:placeholder {
+    input:focus::placeholder, textarea:focus::placeholder {
         color: #bbb5af;
     }
+	P.blocktext {
+		margin-left: auto;
+		margin-right: auto;}
 
-    input::-ms-placeholder, textarea::-ms-placeholder {
-        color: #aca49c;
-        font-size: 0.875em;
-    }
-
-    input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
-        color: #bbb5af;
-    }
-
+				IMG.displayed {
+					display: block;
+					margin-left: auto;
+					margin-right: auto }
     /* on hover placeholder */
 
     input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
@@ -72,11 +70,6 @@
         color: #e2dedb;
         font-size: 0.875em;
     }
-
-    input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
-        color: #cbc6c1;
-    }
-
     body {
         font-family: 'Lato', sans-serif;
         background: #e2dedb;
@@ -90,15 +83,6 @@
         text-align: center;
         letter-spacing: 7px;
     }
-
-    return {
-        position: relative;
-        margin: 100px 0 25px 0;
-        font-size: 1.0em;
-        text-align: center;
-        letter-spacing: 3px;
-    }
-
     #form {
         position: relative;
         width: 500px;
@@ -192,11 +176,10 @@
 		</nav>
 		<div class="container">
     		<div class="blurb">
-        		<h1>hello</h1>
-			<img src="condiegov.github.io/Pepega.png">
-			<small>scuffed website</small>
-      
-          <p></p>
+				<div style="text-align:center">hello
+					<p>worlds most scuffed website</p></div>
+
+			<img class="displayed" src="condiegov.github.io/Pepega.png">
     		</div><!-- /.blurb -->
 		</div><!-- /.container -->
 		<footer>
