@@ -169,16 +169,14 @@
         height: 100%;
         margin: 0;
     }
-    .wrapper {
-        min-height: 100%;
-
-        /* Equal to height of footer */
-        /* But also accounting for potential margin-bottom of last child */
-        margin-bottom: -50px;
-    }
-    .footer,
-    .push {
-        height: 50px;
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: transparent;
+        color: transparent;
+        text-align: center;
     }
 </style>
 	<head>
@@ -196,13 +194,9 @@
 					<h2>world's most scuffed website</h2></div>
 
 			<img class="displayed" src="condiegov.github.io/Pepega.png">
-                <div class="wrapper">
-
+                <div class="footer">
                     <img class="displayed" src="condiegov.github.io/nyanPls.gif">
-
-                    <div class="push"></div>
                 </div>
-                <footer class="footer"></footer>
     		</div><!-- /.blurb -->
 		</div><!-- /.container -->
 		<footer>
