@@ -1,41 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
-<style>
-    @font-face {
-        src: url("font/FRABK.woff");
-        font-family: fgb;
-    }
+    <style>
+        @font-face {
+            src: url("font/FRABK.woff");
+            font-family: fgb;
+        }
+        
+        .paragraph {
+            font-size: 30px;
+            line-height: 62px;
+            font-family: "Franklin Gothic Book";
+        }
 
-    .paragraph {
-        font-size: 30px;
-        line-height: 62px;
-        font-family: "Franklin Gothic Book";
-    }
-    .cmrinf {
-        font-size: 25px;
-        font-family: "Franklin Gothic Book";
-    }
-    .smlinfo {
-        font-size: 15px;
-        font-family: "Franklin Gothic Book";
-    }
+        .cmrinf {
+            font-size: 20px;
+            font-family: "Franklin Gothic Book";
+        }
 
-</style>
+        .smlinfo {
+            font-size: 15px;
+            font-family: "Franklin Gothic Book";
+        }
 
-</html>
-<head>
-    <meta charset="UTF-8">
-    <title>portfolio</title>
-</head>
-<body>
-<div align="center">
-<small class="paragraph">portfolio</small>
-    <br>
-    <img src="https://c1.staticflickr.com/3/2853/32988701530_83dadac9f2_k.jpg" width="680" height="1024">
-    <br>
-    <p class="cmrinf">Nikon D90</p>
-    <img src="https://s.yimg.com/ap/build/images/scrappy-camera-icons/NikonD100.png"> <p class="smlinfo"> 70.0-300.0 mm f/4.0-5.6</p>
-</div>
-</body>
+        .responsive {
+            width: auto;
+            height: 550px;
+        }
+        #cursor-image {
+            display: block;
+            width: 11px;
+            height: 10px;
+            background: url('./cursor sprites.png') 0 0 no-repeat
+        }
+
+        #cursor-image.left {
+            background-position: 0 -38px
+        }
+
+        #cursor-image.left-down {
+            background-position: 0 -38px;
+            transform: scale(1.4, 1.4);
+            -ms-transform: scale(1.4, 1.4);
+            -webkit-transform: scale(1.4, 1.4)
+        }
+
+        #cursor-image.zoom {
+            background-position: 0 -14px;
+            height: 14px;
+            width: 14px
+        }
+
+        #cursor-image.zoom-down {
+            background-position: 0 -14px;
+            height: 14px;
+            width: 14px;
+            opacity: 0.5
+        }
+
+        #cursor-image.right {
+            background-position: 0 -58px
+        }
+
+        #cursor-image.right-down {
+            background-position: 0 -58px;
+            transform: scale(1.4, 1.4);
+            -ms-transform: scale(1.4, 1.4);
+            -webkit-transform: scale(1.4, 1.4)
+        }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <title>portfolio</title>
+    </head>
+    <body>
+        <script>
+            window.addEventListener('mousemove',function() {
+                var cursor = document.getElementById('cursor-image');
+                if (event.clientX < window.screen.width / 3) {
+                    cursor.className = 'left'
+                } else if (event.clientX > window.screen.width / 3 * 2) {
+                    cursor.className = 'right'
+                } else {
+                    cursor.className = 'zoom'
+                }
+            })
+
+            window.addEventListener('mousemove',function() {
+                var cursor = document.getElementById('cursor-image');
+                var cursor_class = cursor.getAttribute('class');
+                if (cursor_class === 'left') {
+                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.screen.width + 15 + 9, event.clientX - 20) + 'px'
+                } else if (cursor_class === 'right') {
+                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX + 17) + 'px'
+                } else if (cursor_class === 'zoom') {
+                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY - 24) + 'px',
+                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX - 8) + 'px'
+                } else {
+                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX + 17) + 'px'
+                }
+            })
+                
+            /*LookBookLightbox.prototype.actionForMousePos = function(x, y) {
+                var $img, imageLeftBoundary, imageRightBoundary;
+                $img = $('#lightbox-container img');
+                imageLeftBoundary = $img.position().left;
+                imageRightBoundary = $img.position().left + $img.width();
+                if (x < imageLeftBoundary && this.controller.hasPrevImage()) {
+                    return 'prevImage';
+                } else if (x > imageRightBoundary && this.controller.hasNextImage()) {
+                    return 'nextImage';
+                }
+            };
+            window.addEventListener('mousemove',function(){h
+                var cursor = document.getElementById('cursor-image');
+                cursor.style.top = event.clientY + 'px';
+                cursor.style.left = event.clientX + 'px';
+            });*/
+        </script>
+        <span id="cursor-image" style="position: absolute; z-index: 10000; display: block; top: 0px; left: 100px;" class="left"></span>
+        <div align="center">
+            <small class="paragraph">portfolio</small>
+            <br>
+            <div id='img'><img id='img' src="https://touched-me.today/FaDjjc" class="responsive"></div>
+            <br>
+            <p id='makeAndModel' class="cmrinf"></p>
+            <img id='modelImg' src=''> 
+            <p id='settingsInfo' class="smlinfo"></p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/exif-js" async></script>
+        <script type='text/javascript' src="./exif.js" async></script>
+    </body>
 </html>
