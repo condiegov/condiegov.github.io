@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="en">
     <style>
@@ -23,14 +24,14 @@
         }
 
         .responsive {
-            width: auto;
-            height: 550px;
+            max-width: 50%;
+            max-height: 550px;
         }
         #cursor-image {
             display: block;
             width: 11px;
             height: 10px;
-            background: url('./cursor sprites.png') 0 0 no-repeat
+            background: url('./sources/cursor sprites.png') 0 0 no-repeat
         }
 
         #cursor-image.left {
@@ -74,11 +75,72 @@
     </head>
     <body>
         <script>
+            var imgs = []
+            var currentImg = 0
+            for(i = 0;39 > i;i++) {
+                if(i <= 9) {
+                    imgs.push(`./portfolio/00${i}.jpg`)
+                }
+                else {
+                    imgs.push(`./portfolio/0${i}.jpg`)
+                }
+            }
+            imgs.splice(0, 1)
+            console.log(imgs)
+
+            function checkNextImg(direction, addrs){
+                if (imgs.indexOf(currentImg + 1)) {
+                    currentImg++
+                    addrs.src = imgs[currentImg]
+                    EXIF.getData(imgs[currentImg], function() {
+                        document.getElementById("makeAndModel").innerHTML = 'test'
+                    })
+                }
+            }
+            function checkPreviousImg(direction, addrs){
+                if (imgs.indexOf(currentImg + 1)) {
+                    currentImg--
+                    addrs.src = imgs[currentImg]
+                    EXIF.getData(imgs[currentImg], function() {
+                        document.getElementById("makeAndModel").innerHTML = 'test'
+                    })
+                }
+            }
+            function change(direction, addrs) {
+                if (direction == 'left') {
+                    addrs.src = img[currentImg]
+                    console.log(currentImg)
+                } else if (direction == 'right') {
+                    addrs.src = img[currentImg]
+                    console.log(currentImg)
+                }
+            }
+
+            window.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
+            window.addEventListener('click', function() {
+                var cursor = document.getElementById('cursor-image');
+                var cursor_class = cursor.getAttribute('class');
+                var img = document.getElementById('img')
+                if (cursor_class === 'left') {
+                    checkPreviousImg(cursor_class, img)
+                    EXIF.getData(img, function() {
+                        document.getElementById("makeAndModel").innerHTML = 'test'
+                    })
+                } else if (cursor_class === 'right') {
+                    checkNextImg(cursor_class, img)
+                    EXIF.getData(img, function() {
+                        document.getElementById("makeAndModel").innerHTML = 'test'
+                    })
+                } else if (cursor_class === 'zoom') {
+                }
+            })
+
+
             window.addEventListener('mousemove',function() {
                 var cursor = document.getElementById('cursor-image');
-                if (event.clientX < window.screen.width / 3) {
+                if (event.clientX < window.innerWidth / 3) {
                     cursor.className = 'left'
-                } else if (event.clientX > window.screen.width / 3 * 2) {
+                } else if (event.clientX > window.innerWidth / 3 * 2) {
                     cursor.className = 'right'
                 } else {
                     cursor.className = 'zoom'
@@ -89,19 +151,20 @@
                 var cursor = document.getElementById('cursor-image');
                 var cursor_class = cursor.getAttribute('class');
                 if (cursor_class === 'left') {
-                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.screen.width + 15 + 9, event.clientX - 20) + 'px'
+                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.innerWidth + 15 + 9, event.clientX - 20) + 'px'
                 } else if (cursor_class === 'right') {
-                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX + 17) + 'px'
+                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX + 17) + 'px'
                 } else if (cursor_class === 'zoom') {
-                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY - 24) + 'px',
-                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX - 8) + 'px'
+                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY - 24) + 'px',
+                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX - 8) + 'px'
                 } else {
-                    cursor.style.top = Math.min(window.screen.height - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.screen.width - 15 - 9, event.clientX + 17) + 'px'
+                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
+                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX + 17) + 'px'
                 }
             })
+
                 
             /*LookBookLightbox.prototype.actionForMousePos = function(x, y) {
                 var $img, imageLeftBoundary, imageRightBoundary;
@@ -124,11 +187,12 @@
         <div align="center">
             <small class="paragraph">portfolio</small>
             <br>
-            <div id='region'><img id='img' src="./32988701530_45f37bc65f_o (1).jpg" class="responsive"></div>
+            <div id='region'><img id='img' src="./portfolio/001.jpg" class="responsive"></div>
             <br>
             <p id='makeAndModel' class="cmrinf"></p>
             <img id='modelImg' src=''> 
             <p id='settingsInfo' class="smlinfo"></p>
+            <p id='test' class='smlinfo'></p>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/exif-js" async></script>
         <script type='text/javascript' src="./exif.js" async></script>

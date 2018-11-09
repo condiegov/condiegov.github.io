@@ -4,10 +4,10 @@ function getExif() {
     EXIF.getData(img, function() {
         var make = EXIF.getTag(this, "Make");
         var model = EXIF.getTag(this, "Model");
-        var fstop = EXIF.getTag(this, 'F-stop');
+        /*var fstop = EXIF.getTag(this, 'F-stop');
         var exposure = EXIF.getTag(this, 'Exposure time');
         var focal = EXIF.getTag(this, 'Focal length');
-        var iso = EXIF.getTag(this, 'ISO')
+        var iso = EXIF.getTag(this, 'ISO')*/
         var makeAndModel = document.getElementById("makeAndModel");
         var settingsInfo = document.getElementById('settingsInfo');
         var modelImg = document.getElementById('modelImg');
