@@ -74,6 +74,8 @@
         <title>portfolio</title>
     </head>
     <body>
+        <script src="https://cdn.jsdelivr.net/npm/exif-js" async></script>
+        <script type='text/javascript' src="./exif.js" async></script>    
         <script>
             var imgs = []
             var currentImg = 0
@@ -92,18 +94,20 @@
                 if (imgs.indexOf(currentImg + 1)) {
                     currentImg++
                     addrs.src = imgs[currentImg]
-                    EXIF.getData(imgs[currentImg], function() {
+                    getExif()
+                    /*EXIF.getData(imgs[currentImg], function() {
                         document.getElementById("makeAndModel").innerHTML = 'test'
-                    })
+                    })*/
                 }
             }
             function checkPreviousImg(direction, addrs){
                 if (imgs.indexOf(currentImg + 1)) {
                     currentImg--
                     addrs.src = imgs[currentImg]
-                    EXIF.getData(imgs[currentImg], function() {
+                    getExif()
+                    /*EXIF.getData(imgs[currentImg], function() {
                         document.getElementById("makeAndModel").innerHTML = 'test'
-                    })
+                    })*/
                 }
             }
             function change(direction, addrs) {
@@ -123,14 +127,14 @@
                 var img = document.getElementById('img')
                 if (cursor_class === 'left') {
                     checkPreviousImg(cursor_class, img)
-                    EXIF.getData(img, function() {
+                    /*EXIF.getData(img, function() {
                         document.getElementById("makeAndModel").innerHTML = 'test'
-                    })
+                    })*/
                 } else if (cursor_class === 'right') {
                     checkNextImg(cursor_class, img)
-                    EXIF.getData(img, function() {
+                    /*EXIF.getData(img, function() {
                         document.getElementById("makeAndModel").innerHTML = 'test'
-                    })
+                    })*/
                 } else if (cursor_class === 'zoom') {
                 }
             })
@@ -192,9 +196,6 @@
             <p id='makeAndModel' class="cmrinf"></p>
             <img id='modelImg' src=''> 
             <p id='settingsInfo' class="smlinfo"></p>
-            <p id='test' class='smlinfo'></p>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/exif-js" async></script>
-        <script type='text/javascript' src="./exif.js" async></script>
     </body>
 </html>
