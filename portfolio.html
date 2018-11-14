@@ -22,18 +22,20 @@
             font-size: 15px;
             font-family: "Franklin Gothic Book";
         }
-
+        /*make image responsive to resizing of webpage*/
         .responsive {
             max-width: 50%;
             max-height: 550px;
         }
+        /*start the image class*/
         #cursor-image {
             display: block;
             width: 11px;
             height: 10px;
             background: url('./sources/cursor sprites.png') 0 0 no-repeat
         }
-
+        /*move sprite sheet to correctly show the right sprite*/
+        /*start*/
         #cursor-image.left {
             background-position: 0 -38px
         }
@@ -68,15 +70,17 @@
             -ms-transform: scale(1.4, 1.4);
             -webkit-transform: scale(1.4, 1.4)
         }
+        /*end*/
     </style>
     <head>
         <meta charset="UTF-8">
         <title>portfolio</title>
+        <!--load getExif() and our own functions-->
+        <script src="https://cdn.jsdelivr.net/npm/exif-js" ></script>
+        <script type='text/javascript' src="./exif.js" ></script>    
     </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/exif-js" async></script>
-        <script type='text/javascript' src="./exif.js" async></script>    
-        <script>
+        <!--<script>
             var imgs = []
             var currentImg = 0
             for(i = 0;39 > i;i++) {
@@ -88,10 +92,10 @@
                 }
             }
             imgs.splice(0, 1)
-            console.log(imgs)
-
+            
             function checkNextImg(direction, addrs){
-                if (imgs.indexOf(currentImg + 1)) {
+                console.log(currentImg)
+                if (imgs[currentImg + 1]) {
                     currentImg++
                     addrs.src = imgs[currentImg]
                     getExif()
@@ -101,7 +105,7 @@
                 }
             }
             function checkPreviousImg(direction, addrs){
-                if (imgs.indexOf(currentImg + 1)) {
+                if (imgs[currentImg + -1]) {
                     currentImg--
                     addrs.src = imgs[currentImg]
                     getExif()
@@ -187,11 +191,15 @@
                 cursor.style.left = event.clientX + 'px';
             });*/
         </script>
+        -->
         <span id="cursor-image" style="position: absolute; z-index: 10000; display: block; top: 0px; left: 100px;" class="left"></span>
         <div align="center">
             <small class="paragraph">portfolio</small>
             <br>
-            <div id='region'><img id='img' src="./portfolio/001.jpg" class="responsive"></div>
+            <!--testing to see if i can make cursor location a bit better-->
+            <div id='region'>
+                <img id='img' src="./portfolio/001.jpg" class="responsive">
+            </div>
             <br>
             <p id='makeAndModel' class="cmrinf"></p>
             <img id='modelImg' src=''> 
