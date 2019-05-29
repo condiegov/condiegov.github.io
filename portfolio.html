@@ -1,4 +1,3 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!DOCTYPE html>
 <html lang="en">
     <style>
@@ -22,188 +21,20 @@
             font-size: 15px;
             font-family: "Franklin Gothic Book";
         }
-        /*make image responsive to resizing of webpage*/
-        .responsive {
-            max-width: 50%;
-            max-height: 550px;
-        }
-        /*start the image class*/
-        #cursor-image {
-            display: block;
-            width: 11px;
-            height: 10px;
-            background: url('./sources/cursor sprites.png') 0 0 no-repeat
-        }
-        /*move sprite sheet to correctly show the right sprite*/
-        /*start*/
-        #cursor-image.left {
-            background-position: 0 -38px
-        }
-
-        #cursor-image.left-down {
-            background-position: 0 -38px;
-            transform: scale(1.4, 1.4);
-            -ms-transform: scale(1.4, 1.4);
-            -webkit-transform: scale(1.4, 1.4)
-        }
-
-        #cursor-image.zoom {
-            background-position: 0 -14px;
-            height: 14px;
-            width: 14px
-        }
-
-        #cursor-image.zoom-down {
-            background-position: 0 -14px;
-            height: 14px;
-            width: 14px;
-            opacity: 0.5
-        }
-
-        #cursor-image.right {
-            background-position: 0 -58px
-        }
-
-        #cursor-image.right-down {
-            background-position: 0 -58px;
-            transform: scale(1.4, 1.4);
-            -ms-transform: scale(1.4, 1.4);
-            -webkit-transform: scale(1.4, 1.4)
-        }
-        /*end*/
     </style>
     <head>
-        <meta charset="UTF-8">
-        <title>portfolio</title>
-        <!--load getExif() and our own functions-->
-        <script src="https://cdn.jsdelivr.net/npm/exif-js" ></script>
-        <script type='text/javascript' src="./exif.js" ></script>    
+        <title>portfolio</title> 
     </head>
     <body>
-        <!--<script>
-            var imgs = []
-            var currentImg = 0
-            for(i = 0;39 > i;i++) {
-                if(i <= 9) {
-                    imgs.push(`./portfolio/00${i}.jpg`)
-                }
-                else {
-                    imgs.push(`./portfolio/0${i}.jpg`)
-                }
-            }
-            imgs.splice(0, 1)
-            
-            function checkNextImg(direction, addrs){
-                console.log(currentImg)
-                if (imgs[currentImg + 1]) {
-                    currentImg++
-                    addrs.src = imgs[currentImg]
-                    getExif()
-                    /*EXIF.getData(imgs[currentImg], function() {
-                        document.getElementById("makeAndModel").innerHTML = 'test'
-                    })*/
-                }
-            }
-            function checkPreviousImg(direction, addrs){
-                if (imgs[currentImg + -1]) {
-                    currentImg--
-                    addrs.src = imgs[currentImg]
-                    getExif()
-                    /*EXIF.getData(imgs[currentImg], function() {
-                        document.getElementById("makeAndModel").innerHTML = 'test'
-                    })*/
-                }
-            }
-            function change(direction, addrs) {
-                if (direction == 'left') {
-                    addrs.src = img[currentImg]
-                    console.log(currentImg)
-                } else if (direction == 'right') {
-                    addrs.src = img[currentImg]
-                    console.log(currentImg)
-                }
-            }
-
-            window.addEventListener('mousedown', function(e){ e.preventDefault(); }, false);
-            window.addEventListener('click', function() {
-                var cursor = document.getElementById('cursor-image');
-                var cursor_class = cursor.getAttribute('class');
-                var img = document.getElementById('img')
-                if (cursor_class === 'left') {
-                    checkPreviousImg(cursor_class, img)
-                    /*EXIF.getData(img, function() {
-                        document.getElementById("makeAndModel").innerHTML = 'test'
-                    })*/
-                } else if (cursor_class === 'right') {
-                    checkNextImg(cursor_class, img)
-                    /*EXIF.getData(img, function() {
-                        document.getElementById("makeAndModel").innerHTML = 'test'
-                    })*/
-                } else if (cursor_class === 'zoom') {
-                }
-            })
-
-
-            window.addEventListener('mousemove',function() {
-                var cursor = document.getElementById('cursor-image');
-                if (event.clientX < window.innerWidth / 3) {
-                    cursor.className = 'left'
-                } else if (event.clientX > window.innerWidth / 3 * 2) {
-                    cursor.className = 'right'
-                } else {
-                    cursor.className = 'zoom'
-                }
-            })
-
-            window.addEventListener('mousemove',function() {
-                var cursor = document.getElementById('cursor-image');
-                var cursor_class = cursor.getAttribute('class');
-                if (cursor_class === 'left') {
-                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.innerWidth + 15 + 9, event.clientX - 20) + 'px'
-                } else if (cursor_class === 'right') {
-                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX + 17) + 'px'
-                } else if (cursor_class === 'zoom') {
-                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY - 24) + 'px',
-                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX - 8) + 'px'
-                } else {
-                    cursor.style.top = Math.min(window.innerHeight - 15 - 9, event.clientY) + 'px',
-                    cursor.style.left = Math.min(window.innerWidth - 15 - 9, event.clientX + 17) + 'px'
-                }
-            })
-
-                
-            /*LookBookLightbox.prototype.actionForMousePos = function(x, y) {
-                var $img, imageLeftBoundary, imageRightBoundary;
-                $img = $('#lightbox-container img');
-                imageLeftBoundary = $img.position().left;
-                imageRightBoundary = $img.position().left + $img.width();
-                if (x < imageLeftBoundary && this.controller.hasPrevImage()) {
-                    return 'prevImage';
-                } else if (x > imageRightBoundary && this.controller.hasNextImage()) {
-                    return 'nextImage';
-                }
-            };
-            window.addEventListener('mousemove',function(){
-                var cursor = document.getElementById('cursor-image');
-                cursor.style.top = event.clientY + 'px';
-                cursor.style.left = event.clientX + 'px';
-            });*/
-        </script>
-        -->
-        <span id="cursor-image" style="position: absolute; z-index: 10000; display: block; top: 0px; left: 100px;" class="left"></span>
         <div align="center">
             <small class="paragraph">portfolio</small>
+            <div align="center">
+                <p href="/architecture.html" style="font-size:50px; text-decoration: none;">architecture</p>
+                <p href="Mainpage.htm"style="font-size:50px; text-decoration: none;">clouds</p>      
+                <p href="Mainpage.htm"style="font-size:50px; text-decoration: none;">macros</p>
+                <p href="Mainpage.htm"style="font-size:50px; text-decoration: none;">landscapes</p>
+                <p href="Mainpage.htm"style="font-size:50px; text-decoration: none;">people</p>                  
             <br>
-            <!--testing to see if i can make cursor location a bit better-->
-            <div id='region'>
-                <img id='img' src="./portfolio/001.jpg" class="responsive">
-            </div>
-            <br>
-            <p id='makeAndModel' class="cmrinf"></p>
-            <img id='modelImg' src=''> 
-            <p id='settingsInfo' class="smlinfo"></p>
         </div>
     </body>
 </html>
