@@ -33,58 +33,23 @@ width: 0px;
 ::-webkit-scrollbar-thumb {
         background: rgb(255, 255, 255);
 }
-#return-to-top {
-position: fixed;
-bottom: 20px;
-right: 20px;
-background: rgb(0, 0, 0);
-background: rgba(0, 0, 0, 0.7);
-width: 50px;
-height: 50px;
-display: block;
-text-decoration: none;
--webkit-border-radius: 35px;
--moz-border-radius: 35px;
-border-radius: 35px;
-display: none;
--webkit-transition: all 0.3s linear;
--moz-transition: all 0.3s ease;
--ms-transition: all 0.3s ease;
--o-transition: all 0.3s ease;
-transition: all 0.3s ease;
+#back2Top {
+    width: 60px;
+    line-height: 40px;
+    overflow: hidden;
+    z-index: 999;
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 50px;
+    right: 0;
+    background-color: #DDD;
+    color: #555;
+    text-align: center;
+    font-size: 40px;
+    text-decoration: none;
 }
-#return-to-top i {
-color: #fff;
-margin: 0;
-position: relative;
-left: 16px;
-top: 13px;
-font-size: 19px;
--webkit-transition: all 0.3s ease;
--moz-transition: all 0.3s ease;
--ms-transition: all 0.3s ease;
--o-transition: all 0.3s ease;
-transition: all 0.3s ease;
-}
-#return-to-top:hover {
-background: rgba(0, 0, 0, 0.9);
-}
-#return-to-top:hover i {
-color: #fff;
-top: 5px;
-}
-
-/* Extra Things */
-body {
-background: #eee;
-font-family: "Open Sans", sans-serif;
-}
-h3 {
-font-size: 30px;
-font-weight: 400;
-text-align: center;
-margin-top: 50px;
-}
-h3 i {
-color: #444;
+#back2Top:hover {
+    background-color: #DDF;
+    color: #000;
 }

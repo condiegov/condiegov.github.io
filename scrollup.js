@@ -1,13 +1,18 @@
-// ===== Scroll to Top ==== 
+/*Scroll to top when arrow up clicked BEGIN*/
 $(window).scroll(function() {
-    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
-        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    var height = $(window).scrollTop();
+    if (height > 100) {
+        $('#back2Top').fadeIn();
     } else {
-        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+        $('#back2Top').fadeOut();
     }
 });
-$('#return-to-top').click(function() {      // When arrow is clicked
-    $('body,html').animate({
-        scrollTop : 0                       // Scroll to top of body
-    }, 500);
+$(document).ready(function() {
+    $("#back2Top").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+
 });
+ /*Scroll to top when arrow up clicked END*/
