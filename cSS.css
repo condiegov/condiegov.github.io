@@ -23,7 +23,7 @@ background-color:#fff5ea;
 /*
 */
 #portrait img {
-width: 60%;
+width: 50%;
 }
 #landscape img {
 width: 80%;
@@ -64,5 +64,5 @@ width: 0px;
     text-align: center;
   }
   #pfp {
-      
+
   }
