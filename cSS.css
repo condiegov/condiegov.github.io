@@ -2,7 +2,9 @@
     src: url("font/FRABK.woff");
     font-family: fgb;
 }
-
+body{
+background-color:#f2f2f2;
+}
 .paragraph {
     font-size: 30px;
     line-height: 62px;
