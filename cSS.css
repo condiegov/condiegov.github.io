@@ -28,6 +28,9 @@ width: 50%;
 #landscape img {
 width: 80%;
 }
+#superlandscape img {
+    width: 97%
+}
 
 ::-webkit-scrollbar {
 width: 0px;
