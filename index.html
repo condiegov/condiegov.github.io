@@ -1,168 +1,95 @@
 <!DOCTYPE html>
 <html>
     <style>
-        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
-
-        textarea:focus::-webkit-input-placeholder, input:focus::-webkit-input-placeholder {
-            color: #9aa5b7;
-        }
-
-        input::-moz-placeholder, textarea::-moz-placeholder {
-            color: #838383;
-            font-size: 0.875em;
-        }
-
-        input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
-            color: #9aa5b7;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
-
-        input:focus::placeholder, textarea:focus::placeholder {
-            color: #9aa5b7;
-        }
-
-        input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
-
-        input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
-            color: #9aa5b7;
-        }
-
-        input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
-
-        input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
-            color: #9aa5b7;
-        }
-
-        input:hover::placeholder, textarea:hover::placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
-
-        input:hover:focus::placeholder, textarea:hover:focus::placeholder {
-            color: #9aa5b7;
-        }
-
-        input:hover::placeholder, textarea:hover::placeholder {
-            color: #9aa5b7;
-            font-size: 0.875em;
-        }
 /* background color */
         body {
-            font-family: 'Lato', sans-serif;
-            background: #23272a;
+            background: #ffffff;
+            
  /* text color */
-            color: #b1b1b1;
-        }
-
-        header {
-            position: relative;
-            margin: 100px 0 25px 0;
-            font-size: 2.3em;
-            text-align: center;
-            letter-spacing: 7px;
-        }
-        #form {
-            position: relative;
-            width: 500px;
-            margin: 50px auto 100px auto;
-        }
-
-        input {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.875em;
-            width: 470px;
-            height: 50px;
-            padding: 0px 15px 0px 15px;
-
-            background: transparent;
-            outline: none;
-            color: #bfb1f9;
-
-            border: solid 1px #bfb1f9;
-            border-bottom: none;
-
-            transition: all 0.3s ease-in-out;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -ms-transition: all 0.3s ease-in-out;
-        }
-
-        input:hover {
-            background: #bfb1f9;
-            color: #bfb1f9;
-        }
-
-        textarea {
-            width: 470px;
-            max-width: 470px;
-            height: 110px;
-            max-height: 110px;
-            padding: 15px;
-
-            background: transparent;
-            outline: none;
-
-            color: #838383;
-            font-family: 'Lato', sans-serif;
-            font-size: 0.875em;
-
-            border: solid 1px #9aa5b7;
-
-            transition: all 0.3s ease-in-out;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -ms-transition: all 0.3s ease-in-out;
-        }
-
-        textarea:hover {
-            background: #bfb1f9;
-            color: #bfb1f9;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
+            color: #000000;
         }
         .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
+            position:fixed;
+            left:0;
+            bottom:0;
+            scale:10%;
             background-color: transparent;
             color: transparent;
-            text-align: center;
+            text-align: right;
+            font-size: 12px;
+            font-weight: 300;
+            margin-left:0.5%;
         }
+        .tl {
+        margin-top: 1.5%;
+        margin-left: 0.5%;
+            font-weight:900;
+            font-size: 100px;
+        }
+        
+        .lnkdos{
+            color:inherit;
+            font-size: 60px;
+            margin-left: 0.5%; 
+        }
+        .lnk{
+            color:inherit;
+            font-size: 60px;
+            margin-left: 0.5%; 
+            margin-bottom: 1%;
+            
+        }
+        .twt{
+            font-size: 30px;
+            font-weight: 300;
+            margin-left: 0.7%;
+            margin-top: 3%;
+        }
+        .ig{
+            font-size: 30px;
+            font-weight: 300;
+            margin-left: 0.7%;
+            margin-top: 0.01%;
+        }
+
+        /*font */
+        body {
+        font-family: 'Spartan';
+      }
+      ::selection {
+          color:white;
+          background:black
+      }
+      a:hover{
+        background-color: aquamarine;
+      }
+a { text-decoration : none; color : #000; }
+
     </style>
 	<head>
+        <link href="https://fonts.googleapis.com/css?family=Spartan:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<title>condie's website</title>
 	</head>
 	<body>
-    <div align="center">
-        <h1>hello</h1>
-        <h2>world's most 
-            <a href="/scuffed" style="color: #b1b1b1; text-decoration: none;">scuffed</a>
-             website</h2>
-    <br>
-        <a href="/portfolio" style="color: #b1b1b1; text-decoration: none;">portfolio</a>
-<br>
-<a href="/dj" style="color: #b1b1b1; text-decoration: none;">dj stuff</a>
+    <div class="tl" align="left">
+        <a1>condie's website</a1>
     </div>
-
-
-    <div class="footer">
-        <img src="./sources/nyanPls.gif">
-    </div>
+        <br>
+        <div class="lnk">
+        <a href="/portfolio" style="text-decoration : none;" >portfolio</a>
+        <br>
+        </div>
+        <di class="lnkdos">
+<a href="/dj">dj stuff</a>
+        </div>
+        <div class="twt">
+<a href="https://twitter.com/condiegov">twitter</a>
+        </div>
+        <div class="ig">
+<a href="https://www.instagram.com/condiegov/">instagram</a>
+        </div>
+            <div class="footer">
+            <span style="color: black;">not protected by copyright but do not steal pls</span>
+        </div>
 	</body>
 </html>
